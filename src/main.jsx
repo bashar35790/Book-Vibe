@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import layout from './layout/Layout'
 import Home from './pages/Home'
 import Books from './pages/Books'
+import ErrorPage from './pages/ErrorPage'
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,8 @@ const router = createBrowserRouter([
         element: <Books></Books>
       }
 
-    ]
+    ],
+    errorElement: <ErrorPage></ErrorPage>
   },
   
 
