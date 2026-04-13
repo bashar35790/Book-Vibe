@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
 
 export const BookContext = createContext();
 
@@ -12,11 +13,13 @@ function BookContextProvider({ children }) {
       (book) => book.bookId === currentBook.bookId,
     );
     if (isExist) {
-      alert("You have already marked this book as read.");
+     
+      toast.error("You have already marked this book as read.");
       return;
     }
     const updatedBooks = [...storedBooks, currentBook];
     setSortedBooks(updatedBooks);
+    toast.success("Book marked as read successfully!");
   };
 
   const handleAddWishlist = (currentBook) => {
@@ -24,17 +27,18 @@ function BookContextProvider({ children }) {
       (book) => book.bookId === currentBook.bookId,
     );
     if (isexist) {
-      alert("You have already added this book to your wishlist.");
+      toast.error("You have already added this book to your wishlist.");
       return;
     }
     if (storedBooks.find((book) => book.bookId === currentBook.bookId)) {
-      alert(
-        "You have already marked this book as read. You can't add it to your wishlist.",
+      toast.error(
+        "You have already marked this book as read. You can't add it to your wishlist."
       );
       return;
     }
     const updatedWishlist = [...storedWishlist, currentBook];
     setStoredWishlist(updatedWishlist);
+    toast.success("Book added to wishlist successfully!");
   };
   const data = {
     storedBooks,
