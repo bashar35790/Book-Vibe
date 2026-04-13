@@ -6,6 +6,7 @@ import layout from './layout/Layout'
 import Home from './pages/Home'
 import ErrorPage from './pages/ErrorPage'
 import BookDetais from './pages/BookDetais'
+import BookContextProvider from './context/BookContext'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,8 @@ const router = createBrowserRouter([
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <BookContextProvider>
     <RouterProvider router={router}></RouterProvider>
+    </BookContextProvider>
   </StrictMode>,
 )
