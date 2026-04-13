@@ -7,6 +7,8 @@ import Home from './pages/Home'
 import ErrorPage from './pages/ErrorPage'
 import BookDetais from './pages/BookDetais'
 import BookContextProvider from './context/BookContext'
+import ListedBook from './pages/ListedBook'
+import PagesToRead from './pages/PagesToRead'
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,14 @@ const router = createBrowserRouter([
       {
         index:true,
         element: <Home></Home>
+      },
+      {
+        path: "/listed-books",
+        element: <ListedBook></ListedBook>
+      },
+      {
+        path: "/pages-to-read",
+        element: <PagesToRead></PagesToRead>
       },
       {
         path:"/bookDetails/:bookId",

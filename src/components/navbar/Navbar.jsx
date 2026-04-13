@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { NavLink } from "react-router";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", active: true },
-    { name: "Listed Books"},
-    { name: "Pages to Read"}
+    { name: "Home", path: "/" },
+    { name: "Listed Books", path: "/listed-books" },
+    { name: "Pages to Read", path: "/pages-to-read" }
   ];
 
   return (
@@ -18,16 +19,13 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link, index) => (
-            <button
+            <NavLink
               key={index} 
-              className={`btn-outline px-4 py-2 rounded-lg transition cursor-pointer ${
-                link.active
-                  ? "border border-green-500 text-green-500"
-                  : " hover:text-green-500"
-              }`}
+              to={link.path}
+              className={`btn-outline px-4 py-2 rounded-lg transition cursor-pointer `}
             >
               {link.name}
-            </button>
+            </NavLink>
           ))}
         </div>
 
